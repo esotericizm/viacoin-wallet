@@ -1,4 +1,4 @@
-Welcome to _Bitcoin Wallet_, a standalone Bitcoin payment app for your Android device!
+Welcome to _Viacoin Wallet_, a standalone Viacoin payment app for your Android device!
 
 This project contains several sub-projects:
 
