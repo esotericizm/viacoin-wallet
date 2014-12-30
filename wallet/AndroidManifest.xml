@@ -3,8 +3,13 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	package="com.viacoin.wallet"
 	android:installLocation="internalOnly"
+<<<<<<< HEAD
 	android:versionCode="202"
 	android:versionName="4.12" >
+=======
+	android:versionCode="206"
+	android:versionName="4.16-test" >
+>>>>>>> upstream/master
 
 	<uses-sdk
 		android:minSdkVersion="15"

@@ -84,15 +84,25 @@
   <string name="send_coins_sending_msg">Sender …</string>
   <string name="send_coins_sent_msg">Sendt!</string>
   <string name="send_coins_failed_msg">Mislykkedes!</string>
+<<<<<<< HEAD
   <string name="send_coins_error_msg">Problem under afsendelse af viacoin!</string>
+=======
+  <string name="send_coins_error_msg">Problem under afsendelse af bitcoin!</string>
+  <string name="send_coins_options_priority">Hurtig bekræftelse, højere gebyr</string>
+>>>>>>> upstream/master
   <string name="send_coins_options_empty">Tøm tegnebog</string>
   <string name="send_coins_address_context_clear_title">Skriv ny adresse</string>
   <string name="sweep_wallet_activity_title">Ryd papirtegnebog</string>
   <string name="sweep_wallet_fragment_intro">Du er ved at rydde en papirtegnebog eller kupon. Dette vil flytte alle viacoin fra dette stykke papir til din tegnebog på denne enhed. Når transaktionen er bekræftet, vil papiret være værdiløst og bør ikke genanvendes af sikkerhedsgrunde.</string>
   <string name="sweep_wallet_fragment_hint">Papirtegnebøger bruges oftest som kold opbevaring. Nogle hæveautomater udskriver dem på deres papirbon\'er frem for at sende viacoins direkte til din mobile enhed. Folk bruger nogle gange papirtegnebøger til at sende værdier omkring (anbefales ikke).</string>
   <string name="sweep_wallet_fragment_wallet_unknown">Start ved at scanne papirtegnebogens private nøgle. Brug kamera-knappen.</string>
+  <string name="sweep_wallet_fragment_encrypted">Denne private nøgle beskyttes med en adgangskode.</string>
+  <string name="sweep_wallet_fragment_password">kodeord</string>
+  <string name="sweep_wallet_fragment_bad_password">forkert adgangskode!</string>
   <string name="sweep_wallet_fragment_balance">Saldo der skal ryddes</string>
+  <string name="sweep_wallet_fragment_button_decrypt">Afkryptér</string>
   <string name="sweep_wallet_fragment_button_sweep">Ryd</string>
+  <string name="sweep_wallet_fragment_decrypt_progress">Afkrypterer …\nTager op til 2 minutter.</string>
   <string name="sweep_wallet_fragment_request_wallet_balance_progress">Indlæser saldo …</string>
   <string name="sweep_wallet_fragment_request_wallet_balance_failed_title">Indlæsning af tegnebogens saldo mislykkedes</string>
   <string name="sweep_wallet_fragment_insufficient_money_title">Ikke nok viacoin</string>
@@ -138,7 +148,6 @@
   <string name="transaction_row_message_own_unbroadcasted">Denne betaling er ikke sendt endnu.</string>
   <string name="transaction_row_message_received_direct">Denne betaling er modtaget direkte. Der er en risiko for, at den aldrig bliver tilgængelig.</string>
   <string name="transaction_row_message_received_unconfirmed_unlocked">Denne betaling bør blive tilgængelig om få minutter.</string>
-  <string name="transaction_row_message_received_unconfirmed_locked">Denne betaling er ikke standard og kan ikke stoles på.</string>
   <string name="transaction_row_message_received_dead">Denne betaling er blevet omstødt af afsenderen.</string>
   <string name="transaction_row_message_received_dust">Dette lille beløb kan økonomisk set sandsynligvis aldrig bruges.</string>
   <string name="transaction_row_message_received_pay_to_many">Denne betaling er delt over mange tegnebøger ud over din, hvilket sløver app\'en ned over tid. Hvis du kan, så prøv at modtage betalinger, der kun er til dig.</string>

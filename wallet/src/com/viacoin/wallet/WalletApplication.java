@@ -23,7 +23,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Nonnull;
@@ -86,6 +85,8 @@ public class WalletApplication extends Application
 
 	public static final String ACTION_WALLET_CHANGED = WalletApplication.class.getPackage().getName() + ".wallet_changed";
 
+	public static final int VERSION_CODE_SHOW_BACKUP_REMINDER = 205;
+
 	private static final Logger log = LoggerFactory.getLogger(WalletApplication.class);
 
 	@Override
@@ -131,9 +132,17 @@ public class WalletApplication extends Application
 
 		loadWalletFromProtobuf();
 
+		if (config.versionCodeCrossed(packageInfo.versionCode, VERSION_CODE_SHOW_BACKUP_REMINDER) && !wallet.getImportedKeys().isEmpty())
+		{
+			log.info("showing backup reminder once, because of imported keys being present");
+			config.armBackupReminder();
+		}
+
 		config.updateLastVersionCode(packageInfo.versionCode);
 
 		afterLoadWallet();
+
+		cleanupFiles();
 	}
 
 	private void afterLoadWallet()
@@ -195,11 +204,15 @@ public class WalletApplication extends Application
 		log.setLevel(Level.INFO);
 	}
 
+	private static final String BIP39_WORDLIST_FILENAME = "bip39-wordlist.txt";
+
 	private void initMnemonicCode()
 	{
 		try
 		{
-			MnemonicCode.INSTANCE = new MnemonicCode(getAssets().open("bip39-wordlist.txt"), null);
+			final long start = System.currentTimeMillis();
+			MnemonicCode.INSTANCE = new MnemonicCode(getAssets().open(BIP39_WORDLIST_FILENAME), null);
+			log.info("BIP39 wordlist loaded from: '" + BIP39_WORDLIST_FILENAME + "', took " + (System.currentTimeMillis() - start) + "ms");
 		}
 		catch (final IOException x)
 		{
@@ -372,7 +385,7 @@ public class WalletApplication extends Application
 		log.debug("wallet saved to: '" + walletFile + "', took " + (System.currentTimeMillis() - start) + "ms");
 	}
 
-	private void backupWallet()
+	public void backupWallet()
 	{
 		final Protos.Wallet.Builder builder = new WalletProtobufSerializer().walletToProto(wallet).toBuilder();
 
@@ -405,29 +418,6 @@ public class WalletApplication extends Application
 				// swallow
 			}
 		}
-
-		try
-		{
-			final String filename = String.format(Locale.US, "%s.%02d", Constants.Files.WALLET_KEY_BACKUP_PROTOBUF,
-					(System.currentTimeMillis() / DateUtils.DAY_IN_MILLIS) % 100l);
-			os = openFileOutput(filename, Context.MODE_PRIVATE);
-			walletProto.writeTo(os);
-		}
-		catch (final IOException x)
-		{
-			log.error("problem writing key backup", x);
-		}
-		finally
-		{
-			try
-			{
-				os.close();
-			}
-			catch (final IOException x)
-			{
-				// swallow
-			}
-		}
 	}
 
 	private void migrateBackup()
@@ -438,11 +428,20 @@ public class WalletApplication extends Application
 
 			// make sure there is at least one recent backup
 			backupWallet();
+		}
+	}
 
-			// remove old backups
-			for (final String filename : fileList())
-				if (filename.startsWith(Constants.Files.WALLET_KEY_BACKUP_BASE58))
-					new File(getFilesDir(), filename).delete();
+	private void cleanupFiles()
+	{
+		for (final String filename : fileList())
+		{
+			if (filename.startsWith(Constants.Files.WALLET_KEY_BACKUP_BASE58)
+					|| filename.startsWith(Constants.Files.WALLET_KEY_BACKUP_PROTOBUF + '.') || filename.endsWith(".tmp"))
+			{
+				final File file = new File(getFilesDir(), filename);
+				log.info("removing obsolete file: '{}'", file);
+				file.delete();
+			}
 		}
 	}
 

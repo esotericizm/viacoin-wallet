@@ -100,8 +100,13 @@
 	<string name="sweep_wallet_fragment_intro">Du bist dabei eine Paper-Wallet oder Coupon zu leeren. Dies wird alle Viacoins von diesem Papier in deine Wallet auf diesem Gerät verschieben. Sobald die Transaktion bestätigt ist, wird das Papier wertlos und sollte aus Sicherheitsgründen nicht wiederverwendet werden.</string>
 	<string name="sweep_wallet_fragment_hint">Paper-Wallets werden meist für Cold Storage genutzt. Einige Geldautomaten drucken sie auf das Quittungspapier, anstatt die Viacoins direkt an das mobile Gerät zu versenden. Manchmal werden vorgeladene Paper-Wallets als Zahlungsmittel verwendet (nicht empfohlen).</string>
 	<string name="sweep_wallet_fragment_wallet_unknown">Beginne, indem Du den privaten Schlüssel eines Paper-Wallets scannst. Benutze dafür die Kamera-Schaltfläche.</string>
+	<string name="sweep_wallet_fragment_encrypted">Dieser private Schlüssel ist mit einem Passwort geschützt.</string>
+	<string name="sweep_wallet_fragment_password">Passwort</string>
+	<string name="sweep_wallet_fragment_bad_password">falsches Passwort!</string>
 	<string name="sweep_wallet_fragment_balance">Zu leerendes Guthaben</string>
+	<string name="sweep_wallet_fragment_button_decrypt">Entschlüsseln</string>
 	<string name="sweep_wallet_fragment_button_sweep">Leeren</string>
+	<string name="sweep_wallet_fragment_decrypt_progress">Entschlüsselung…\nDauert bis zu 2 Minuten.</string>
 	<string name="sweep_wallet_fragment_request_wallet_balance_progress">Aktualisiere Guthaben…</string>
 	<string name="sweep_wallet_fragment_request_wallet_balance_failed_title">Guthabenanforderung fehlgeschlagen</string>
 	<string name="sweep_wallet_fragment_insufficient_money_title">Nicht genug Viacoins</string>
@@ -152,7 +157,6 @@
 	<string name="transaction_row_message_own_unbroadcasted">Diese Zahlung ist noch nicht übertragen.</string>
 	<string name="transaction_row_message_received_direct">Diese Zahlung wurde direkt empfangen. Es besteht das Risiko, daß sie niemals verfügbar wird.</string>
 	<string name="transaction_row_message_received_unconfirmed_unlocked">Diese Zahlung sollte in ein paar Minuten verfügbar werden.</string>
-	<string name="transaction_row_message_received_unconfirmed_locked">Diese Zahlung ist nicht standardgemäß und sollte nicht vertraut werden.</string>
 	<string name="transaction_row_message_received_dead">Diese Zahlung wurde vom Sender rückgängig gemacht.</string>
 	<string name="transaction_row_message_received_dust">Dieser kleine Betrag kann vermutlich nie wirtschaftlich ausgegeben werden.</string>
 	<string name="transaction_row_message_received_pay_to_many">Diese Zahlung ging an viele Wallets (neben deiner), was die App mit der Zeit verlangsamt. Versuche wenn möglich Zahlungen zu empfangen, die nur an dich gerichtet sind.</string>

@@ -1,3 +1,26 @@
+v4.16
+
+* Important fix for when a wallet is restored via an external app, the QR code on the main screen
+  can still show an old address for a while.
+
+v4.15
+
+* Important fix for how old pre-version-3.47 wallet backups are restored.
+* We're showing the backup warning for users with old wallets. If you see it, please refresh your
+  backup! It's time everybody is in possession of a backup using the current format.
+
+v4.14
+
+* Update Turkish, Norwegian Bokmål, Japanese, French and Danish translations.
+* Small bugfixes.
+
+v4.13
+
+* Support sweeping of password-protected paper wallets (BIP38).
+* Update Swedish translation.
+* Update android-maven-plugin to 4.0.0, so the build should now be compatible to newer Maven versions.
+* Update to ProGuard 5.1, making it possible to build with a Java 8 compiler.
+
 v4.12
 
 * Small bugfixes.

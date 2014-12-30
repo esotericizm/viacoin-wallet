@@ -6,8 +6,13 @@
 
 	<artifactId>wallet</artifactId>
 	<packaging>apk</packaging>
+<<<<<<< HEAD
 	<version>4.12</version>
 	<name>Viacoin Wallet</name>
+=======
+	<version>4.16-test</version>
+	<name>Bitcoin Wallet</name>
+>>>>>>> upstream/master
 
 	<parent>
 		<groupId>com.viacoin.wallet</groupId>
@@ -141,7 +146,7 @@
 			<build>
 				<plugins>
 					<plugin>
-						<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+		                                <groupId>com.simpligility.maven.plugins</groupId>
 						<artifactId>android-maven-plugin</artifactId>
 						<configuration>
 							<release>true</release>
@@ -149,6 +154,13 @@
 								<skip>false</skip>
 							</proguard>
 						</configuration>
+						<dependencies>
+							<dependency>
+								<groupId>net.sf.proguard</groupId>
+								<artifactId>proguard-base</artifactId>
+								<version>5.1</version>
+							</dependency>
+						</dependencies>
 					</plugin>
 				</plugins>
 			</build>
@@ -240,9 +252,12 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+				<groupId>com.simpligility.maven.plugins</groupId>
 				<artifactId>android-maven-plugin</artifactId>
 				<configuration>
+					<androidManifestFile>AndroidManifest.xml</androidManifestFile>
+					<resourceDirectory>res</resourceDirectory>
+					<assetsDirectory>assets</assetsDirectory>
 					<excludeJarResources>
 						<excludeJarResource>.*\.jar$</excludeJarResource>
 					</excludeJarResources>
